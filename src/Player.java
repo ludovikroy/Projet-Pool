@@ -1,13 +1,15 @@
+import java.text.DecimalFormat;
+
 public class Player {
     // Attribut de la classe
     public static int NbPlayers = 0;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     // Attributs des joueurs (instances)
     private String id;
     private char positionPlayer;
     private String name;
     private String team;
-    private char position2;
     private String status;
     private int age;
     private double ftps;
@@ -23,7 +25,7 @@ public class Player {
     private int hits;
     private double fptsGp14Jours;
     private double ftpsGp30Jours;
-    private double matchAJouerCetteSemaine;
+    private int matchAJouerCetteSemaine;
     private double ftpsPrevisionProchaineSemaine;
 
     // Constructeur par défaut
@@ -33,7 +35,7 @@ public class Player {
 
     // Constructeur des essentiels
     public Player(String id, char positionPlayer, String name, double fptsGp14Jours,
-            double ftpsGp30Jours, double ftpsPerGp, double matchAJouerCetteSemaine,
+            double ftpsGp30Jours, double ftpsPerGp, int matchAJouerCetteSemaine,
             double ftpsPrevisionProchaineSemaine) {
         this.id = id;
         this.positionPlayer = positionPlayer;
@@ -46,7 +48,7 @@ public class Player {
     }
 
     // Constructeur avec paramètres
-    public Player(String id, char positionPlayer, String name, String team, char position2, String status, int age,
+    public Player(String id, char positionPlayer, String name, String team, String status, int age,
             double ftps,
             double ftpsPerGp, int gp, int goals, int assists, int penalties, int shotsOnGoal,
             int shortHandedGoals, int powerPlayPoints, int hatTricks, int hits) {
@@ -54,7 +56,6 @@ public class Player {
         this.positionPlayer = positionPlayer;
         this.name = name;
         this.team = team;
-        this.position2 = position2;
         this.status = status;
         this.age = age;
         this.ftps = ftps;
@@ -149,7 +150,7 @@ public class Player {
         return this.ftpsGp30Jours;
     }
 
-    public double getMatchAJouerCetteSemaine() {
+    public int getMatchAJouerCetteSemaine() {
         return this.matchAJouerCetteSemaine;
     }
 
@@ -235,7 +236,7 @@ public class Player {
         this.ftpsGp30Jours = ftpsGp30Jours;
     }
 
-    public void setMatchAJouerCetteSemaine(double matchAJouerCetteSemaine) {
+    public void setMatchAJouerCetteSemaine(int matchAJouerCetteSemaine) {
         this.matchAJouerCetteSemaine = matchAJouerCetteSemaine;
     }
 
@@ -252,8 +253,13 @@ public class Player {
 
     // Retourne en format de String le contenu d'un objet Player
     public String toString() {
-        return "\n" + this.name + "\t" + this.team + "\t" + this.status + "\t" + this.ftps + " pts\t" + this.ftpsPerGp
-                + "\t"
-                + this.gp + " gp\t" + this.goals + " g\t" + this.assists + " a\t" + this.hits + " hits";
+        return "\n" + this.name + "\t" + this.team + "\t" + df.format(this.ftpsPrevisionProchaineSemaine) + "\t"
+                + this.matchAJouerCetteSemaine + "\t" + this.fptsGp14Jours + "\t" + this.ftpsGp30Jours + "\t"
+                + this.ftpsPerGp + "\t" + this.ftps + " pts\t" +
+                +gp + " gp\t" + this.goals + " g\t" + this.assists + " a\t" + this.hits + " hits";
     }
 }
+
+// Une fonction qui prend le nom de jueur. Si nom inferieur à 120, rajouter des
+// espaces jusqu'à obtenir 120
+// Rajouter les espaces avec une boule
