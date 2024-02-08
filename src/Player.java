@@ -1,5 +1,5 @@
 public class Player {
-    //Attribut de la classe
+    // Attribut de la classe
     public static int NbPlayers = 0;
 
     // Attributs des joueurs (instances)
@@ -7,6 +7,7 @@ public class Player {
     private char positionPlayer;
     private String name;
     private String team;
+    private char position2;
     private String status;
     private int age;
     private double ftps;
@@ -20,15 +21,40 @@ public class Player {
     private int powerPlayPoints;
     private int hatTricks;
     private int hits;
+    private double fptsGp14Jours;
+    private double ftpsGp30Jours;
+    private double matchAJouerCetteSemaine;
+    private double ftpsPrevisionProchaineSemaine;
+
+    // Constructeur par défaut
+    public Player() {
+        NbPlayers++;
+    }
+
+    // Constructeur des essentiels
+    public Player(String id, char positionPlayer, String name, double fptsGp14Jours,
+            double ftpsGp30Jours, double ftpsPerGp, double matchAJouerCetteSemaine,
+            double ftpsPrevisionProchaineSemaine) {
+        this.id = id;
+        this.positionPlayer = positionPlayer;
+        this.name = name;
+        this.fptsGp14Jours = fptsGp14Jours;
+        this.ftpsGp30Jours = ftpsGp30Jours;
+        this.ftpsPerGp = ftpsPerGp;
+        this.matchAJouerCetteSemaine = matchAJouerCetteSemaine;
+        this.ftpsPrevisionProchaineSemaine = ftpsPrevisionProchaineSemaine;
+    }
 
     // Constructeur avec paramètres
-    public Player(String id, char positionPlayer, String name, String team, String status, int age, double ftps, 
-                    double ftpsPerGp, int gp, int goals, int assists, int penalties, int shotsOnGoal, 
-                    int shortHandedGoals, int powerPlayPoints, int hatTricks, int hits) {
+    public Player(String id, char positionPlayer, String name, String team, char position2, String status, int age,
+            double ftps,
+            double ftpsPerGp, int gp, int goals, int assists, int penalties, int shotsOnGoal,
+            int shortHandedGoals, int powerPlayPoints, int hatTricks, int hits) {
         this.id = id;
         this.positionPlayer = positionPlayer;
         this.name = name;
         this.team = team;
+        this.position2 = position2;
         this.status = status;
         this.age = age;
         this.ftps = ftps;
@@ -45,7 +71,7 @@ public class Player {
         ++NbPlayers;
     }
 
-    //Les Getters
+    // Les Getters
 
     public String getId() {
         return this.id;
@@ -62,7 +88,7 @@ public class Player {
     public String getTeam() {
         return this.team;
     }
-    
+
     public String getStatus() {
         return this.status;
     }
@@ -70,23 +96,23 @@ public class Player {
     public int getAge() {
         return this.age;
     }
-    
+
     public double getFtps() {
         return this.ftps;
     }
 
-    public double getFtpsPerGame() {
+    public double getFtpsPerGp() {
         return this.ftpsPerGp;
     }
 
-    public int getGamePlayed() {
+    public int getGp() {
         return this.gp;
     }
 
     public int getGoals() {
         return this.goals;
     }
-    
+
     public int getAssists() {
         return this.assists;
     }
@@ -98,7 +124,7 @@ public class Player {
     public int getShotsOnGoal() {
         return this.shotsOnGoal;
     }
-    
+
     public int getShortHandedGoals() {
         return this.shortHandedGoals;
     }
@@ -110,13 +136,124 @@ public class Player {
     public int getHatTricks() {
         return this.hatTricks;
     }
-    
+
     public int getHits() {
         return this.hits;
     }
 
+    public double getFptsGp14Jours() {
+        return this.fptsGp14Jours;
+    }
+
+    public double getFtpsGp30Jours() {
+        return this.ftpsGp30Jours;
+    }
+
+    public double getMatchAJouerCetteSemaine() {
+        return this.matchAJouerCetteSemaine;
+    }
+
+    public double getFtpsPrevisionProchaineSemaine() {
+        return this.ftpsPrevisionProchaineSemaine;
+    }
+
+    // Les Setters
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setPositionPlayer(char positionPlayer) {
+        this.positionPlayer = positionPlayer;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setFtps(double ftps) {
+        this.ftps = ftps;
+    }
+
+    public void setFtpsPerGp(double ftpsPerGp) {
+        this.ftpsPerGp = ftpsPerGp;
+    }
+
+    public void setGp(int gp) {
+        this.gp = gp;
+    }
+
+    public void setGoals(int goals) {
+        this.goals = goals;
+    }
+
+    public void setAssists(int assists) {
+        this.assists = assists;
+    }
+
+    public void setPenalties(int penalties) {
+        this.penalties = penalties;
+    }
+
+    public void setShotsOnGoal(int shotsOnGoal) {
+        this.shotsOnGoal = shotsOnGoal;
+    }
+
+    public void setShortHandedGoals(int shortHandedGoals) {
+        this.shortHandedGoals = shortHandedGoals;
+    }
+
+    public void setPowerPlayPoints(int powerPlayPoints) {
+        this.powerPlayPoints = powerPlayPoints;
+    }
+
+    public void setHatTricks(int hatTricks) {
+        this.hatTricks = hatTricks;
+    }
+
+    public void setHits(int hits) {
+        this.hits = hits;
+    }
+
+    public void setFptsGp14Jours(double fptsGp14Jours) {
+        this.fptsGp14Jours = fptsGp14Jours;
+    }
+
+    public void setFtpsGp30Jours(double ftpsGp30Jours) {
+        this.ftpsGp30Jours = ftpsGp30Jours;
+    }
+
+    public void setMatchAJouerCetteSemaine(double matchAJouerCetteSemaine) {
+        this.matchAJouerCetteSemaine = matchAJouerCetteSemaine;
+    }
+
+    public void setFtpsPrevisionProchaineSemaine(double ftpsPrevisionProchaineSemaine) {
+        this.ftpsPrevisionProchaineSemaine = ftpsPrevisionProchaineSemaine;
+    }
+
+    // Méthode afficher joueur complet
+    public String afficherPrevision() {
+        return this.id + "\t" + this.positionPlayer + "\t" + this.name + "\t" + this.fptsGp14Jours + "\t"
+                + this.ftpsGp30Jours + "\t" + this.ftpsPerGp + "\t" + this.matchAJouerCetteSemaine + "\t"
+                + this.ftpsPrevisionProchaineSemaine;
+    }
+
     // Retourne en format de String le contenu d'un objet Player
-    public String toString(){
-        return this.name+"\t"+this.team+"\t"+this.status+"\t"+this.ftps+"\t"+this.ftpsPerGp+"\t\t"+this.gp+"\t"+this.goals+"\t"+this.assists+"\t"+this.hits;
-        }
+    public String toString() {
+        return "\n" + this.name + "\t" + this.team + "\t" + this.status + "\t" + this.ftps + " pts\t" + this.ftpsPerGp
+                + "\t"
+                + this.gp + " gp\t" + this.goals + " g\t" + this.assists + " a\t" + this.hits + " hits";
+    }
 }
