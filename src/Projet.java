@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.Arrays;
+import java.util.Comparator;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
@@ -102,7 +104,7 @@ public class Projet {
                 ligne = ligne.replace("\"", "");
                 ligne = ligne.replace("*", "");
                 composants = ligne.split(",");
-                tabPlayers[i].setMatchAJouerCetteSemaine((int)Math.ceil(Double.parseDouble(composants[9])));
+                tabPlayers[i].setMatchAJouerCetteSemaine((int) Math.ceil(Double.parseDouble(composants[9])));
                 i++;
             }
         } catch (Exception e) {
@@ -146,13 +148,31 @@ public class Projet {
         }
     }
 
+    private static void ordonnerSelonPredictionSemaine(){
+        Arrays.sort(tabPlayers, Comparator.comparing(Player::getFtpsPrevisionProchaineSemaine).thenComparing(Player::getFtpsGp30Jours).reversed());
+    }
+
     private static void listerPlayers() {
         JTextArea jta = new JTextArea();
-        jta.append("Nom du joueur\t\t" + "Équipe\t" + "Ftps/Semaine\t" + "Gp this week\t" + "Ftps/gp(14J)\t"
+        jta.append("*****ATTAQUANT*****\n" + "Nom du joueur\t\t" + "Équipe\t" + "Ftps/Semaine\t" + "Gp this week\t"
+                + "Ftps/gp(14J)\t"
                 + "Ftps/gp(30J)\t" + "Ftps/gp\t" + "Ftps\t" + "Game Played\t" + "Goals\t"
-                + "Assists\t" + "Hits\n");
+                + "Assists\t" + "Hits");
         for (Player aPlayer : tabPlayers) {
-            jta.append(aPlayer.toString());
+            //int ranking = 0;
+                if (aPlayer.getPositionPlayer() == 'F') {
+                    jta.append(aPlayer.toString());
+                    //ranking++;
+                }
+        }
+        jta.append("\n\n*****DÉFENSEUR*****\n" + "Nom du joueur\t\t" + "Équipe\t" + "Ftps/Semaine\t" + "Gp this week\t"
+                + "Ftps/gp(14J)\t"
+                + "Ftps/gp(30J)\t" + "Ftps/gp\t" + "Ftps\t" + "Game Played\t" + "Goals\t"
+                + "Assists\t" + "Hits");
+        for (Player aPlayer : tabPlayers) {
+            if (aPlayer.getPositionPlayer() == 'D') {
+                jta.append(aPlayer.toString());
+            }
         }
         JOptionPane.showMessageDialog(null, jta, "Statistiques des joueurs", JOptionPane.PLAIN_MESSAGE);
     }
@@ -165,6 +185,7 @@ public class Projet {
         calculerFtpsPredictionSemaine();
         afficherSiBlessure();
         ajusterLongueurNomJoueur();
+        ordonnerSelonPredictionSemaine();
         listerPlayers();
     }
 }
