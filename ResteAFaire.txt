@@ -1,8 +1,8 @@
 Me reste à réussir à : 
 - gérer mes gardiens car ils ont des stats très différentes
-- faire ajouter une ligne “————“ sous mes 12 meilleurs attaquants et 6 meilleurs defs de la semaine
 - cleaner ma BD automatique (et ne pas à avoir à la clean chaque semaine)
 
 Fait :
+- faire ajouter une ligne “————“ sous mes 12 meilleurs attaquants et 6 meilleurs defs de la semaine
 - sort en ordre décroissant. 
 - séparer mes défenseurs de mes attaquants dans l’affichage

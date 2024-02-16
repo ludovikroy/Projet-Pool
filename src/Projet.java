@@ -158,22 +158,37 @@ public class Projet {
                 + "Ftps/gp(14J)\t"
                 + "Ftps/gp(30J)\t" + "Ftps/gp\t" + "Ftps\t" + "Game Played\t" + "Goals\t"
                 + "Assists\t" + "Hits");
+        int ranking = 1;
         for (Player aPlayer : tabPlayers) {
-            //int ranking = 0;
-                if (aPlayer.getPositionPlayer() == 'F') {
+                if (aPlayer.getPositionPlayer() == 'F' && ranking <= 12) {
                     jta.append(aPlayer.toString());
-                    //ranking++;
+                    ranking++;
+                } else if (aPlayer.getPositionPlayer() == 'F' && ranking == 13){
+                    jta.append("\n\t"+"-".repeat(242)+"\t");
+                    jta.append(aPlayer.toString());
+                    ranking++;
+                } else if (aPlayer.getPositionPlayer() == 'F' && ranking >= 14){
+                    jta.append(aPlayer.toString());
                 }
         }
         jta.append("\n\n*****DÉFENSEUR*****\n" + "Nom du joueur\t\t" + "Équipe\t" + "Ftps/Semaine\t" + "Gp this week\t"
                 + "Ftps/gp(14J)\t"
                 + "Ftps/gp(30J)\t" + "Ftps/gp\t" + "Ftps\t" + "Game Played\t" + "Goals\t"
                 + "Assists\t" + "Hits");
+        ranking = 1;
         for (Player aPlayer : tabPlayers) {
-            if (aPlayer.getPositionPlayer() == 'D') {
+            if (aPlayer.getPositionPlayer() == 'D' && ranking <= 6) {
+                jta.append(aPlayer.toString());
+                ranking++;
+            } else if (aPlayer.getPositionPlayer() == 'D' && ranking == 7){
+                jta.append("\n\t"+"-".repeat(242)+"\t");
+                jta.append(aPlayer.toString());
+                ranking++;
+            } else if (aPlayer.getPositionPlayer() == 'D' && ranking >= 8){
                 jta.append(aPlayer.toString());
             }
         }
+        jta.append("\n");
         JOptionPane.showMessageDialog(null, jta, "Statistiques des joueurs", JOptionPane.PLAIN_MESSAGE);
     }
 
