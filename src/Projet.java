@@ -17,7 +17,7 @@ public class Projet {
         int i = 0;
         BufferedReader bufLire = null;
         try {
-            bufLire = new BufferedReader(new FileReader("./src/donnees/Stats_Saison.txt"));
+            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_19_fev/Stats_Saison.csv"));
             while ((ligne = bufLire.readLine()) != null && i < MAX_PLAYERS) {
                 ligne = ligne.replace("\"", "");
                 ligne = ligne.replace("*", "");
@@ -49,7 +49,7 @@ public class Projet {
         int i = 0;
         BufferedReader bufLire = null;
         try {
-            bufLire = new BufferedReader(new FileReader("./src/donnees/Stats_14Jours.txt"));
+            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_19_fev/Stats_14Jours.csv"));
             while ((ligne = bufLire.readLine()) != null && i < MAX_PLAYERS) {
                 ligne = ligne.replace("\"", "");
                 ligne = ligne.replace("*", "");
@@ -74,7 +74,7 @@ public class Projet {
         int i = 0;
         BufferedReader bufLire = null;
         try {
-            bufLire = new BufferedReader(new FileReader("./src/donnees/Stats_30Jours.txt"));
+            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_19_fev/Stats_30Jours.csv"));
             while ((ligne = bufLire.readLine()) != null && i < MAX_PLAYERS) {
                 ligne = ligne.replace("\"", "");
                 ligne = ligne.replace("*", "");
@@ -99,7 +99,7 @@ public class Projet {
         int i = 0;
         BufferedReader bufLire = null;
         try {
-            bufLire = new BufferedReader(new FileReader("./src/donnees/Stats_MatchsAJouer.txt"));
+            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_19_fev/Stats_MatchsAJouer.csv"));
             while ((ligne = bufLire.readLine()) != null && i < MAX_PLAYERS) {
                 ligne = ligne.replace("\"", "");
                 ligne = ligne.replace("*", "");
@@ -148,8 +148,9 @@ public class Projet {
         }
     }
 
-    private static void ordonnerSelonPredictionSemaine(){
-        Arrays.sort(tabPlayers, Comparator.comparing(Player::getFtpsPrevisionProchaineSemaine).thenComparing(Player::getFtpsGp30Jours).reversed());
+    private static void ordonnerSelonPredictionSemaine() {
+        Arrays.sort(tabPlayers, Comparator.comparing(Player::getFtpsPrevisionProchaineSemaine)
+                .thenComparing(Player::getFtpsGp30Jours).reversed());
     }
 
     private static void listerPlayers() {
@@ -160,16 +161,16 @@ public class Projet {
                 + "Assists\t" + "Hits");
         int ranking = 1;
         for (Player aPlayer : tabPlayers) {
-                if (aPlayer.getPositionPlayer() == 'F' && ranking <= 12) {
-                    jta.append(aPlayer.toString());
-                    ranking++;
-                } else if (aPlayer.getPositionPlayer() == 'F' && ranking == 13){
-                    jta.append("\n\t"+"-".repeat(242)+"\t");
-                    jta.append(aPlayer.toString());
-                    ranking++;
-                } else if (aPlayer.getPositionPlayer() == 'F' && ranking >= 14){
-                    jta.append(aPlayer.toString());
-                }
+            if (aPlayer.getPositionPlayer() == 'F' && ranking <= 12) {
+                jta.append(aPlayer.toString());
+                ranking++;
+            } else if (aPlayer.getPositionPlayer() == 'F' && ranking == 13) {
+                jta.append("\n\t" + "-".repeat(242) + "\t");
+                jta.append(aPlayer.toString());
+                ranking++;
+            } else if (aPlayer.getPositionPlayer() == 'F' && ranking >= 14) {
+                jta.append(aPlayer.toString());
+            }
         }
         jta.append("\n\n*****DÉFENSEUR*****\n" + "Nom du joueur\t\t" + "Équipe\t" + "Ftps/Semaine\t" + "Gp this week\t"
                 + "Ftps/gp(14J)\t"
@@ -180,11 +181,11 @@ public class Projet {
             if (aPlayer.getPositionPlayer() == 'D' && ranking <= 6) {
                 jta.append(aPlayer.toString());
                 ranking++;
-            } else if (aPlayer.getPositionPlayer() == 'D' && ranking == 7){
-                jta.append("\n\t"+"-".repeat(242)+"\t");
+            } else if (aPlayer.getPositionPlayer() == 'D' && ranking == 7) {
+                jta.append("\n\t" + "-".repeat(242) + "\t");
                 jta.append(aPlayer.toString());
                 ranking++;
-            } else if (aPlayer.getPositionPlayer() == 'D' && ranking >= 8){
+            } else if (aPlayer.getPositionPlayer() == 'D' && ranking >= 8) {
                 jta.append(aPlayer.toString());
             }
         }
