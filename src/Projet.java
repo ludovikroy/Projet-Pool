@@ -17,7 +17,7 @@ public class Projet {
         int i = 0;
         BufferedReader bufLire = null;
         try {
-            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_19_fev/Stats_Saison.csv"));
+            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_04_mars/Stats_Saison.csv"));
             while ((ligne = bufLire.readLine()) != null && i < MAX_PLAYERS) {
                 ligne = ligne.replace("\"", "");
                 ligne = ligne.replace("*", "");
@@ -49,7 +49,7 @@ public class Projet {
         int i = 0;
         BufferedReader bufLire = null;
         try {
-            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_19_fev/Stats_14Jours.csv"));
+            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_04_mars/Stats_14Jours.csv"));
             while ((ligne = bufLire.readLine()) != null && i < MAX_PLAYERS) {
                 ligne = ligne.replace("\"", "");
                 ligne = ligne.replace("*", "");
@@ -74,7 +74,7 @@ public class Projet {
         int i = 0;
         BufferedReader bufLire = null;
         try {
-            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_19_fev/Stats_30Jours.csv"));
+            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_04_mars/Stats_30Jours.csv"));
             while ((ligne = bufLire.readLine()) != null && i < MAX_PLAYERS) {
                 ligne = ligne.replace("\"", "");
                 ligne = ligne.replace("*", "");
@@ -99,7 +99,7 @@ public class Projet {
         int i = 0;
         BufferedReader bufLire = null;
         try {
-            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_19_fev/Stats_MatchsAJouer.csv"));
+            bufLire = new BufferedReader(new FileReader("./src/donnees/Semaine_04_mars/Stats_MatchsAJouer.csv"));
             while ((ligne = bufLire.readLine()) != null && i < MAX_PLAYERS) {
                 ligne = ligne.replace("\"", "");
                 ligne = ligne.replace("*", "");
